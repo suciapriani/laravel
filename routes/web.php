@@ -100,3 +100,71 @@ Route::get('post/{id?}', function ($a =1) {
 Route::get('bio/{nama?}/{alamat?}/{jenis?}/{tb?}/{bb?}', function ($nama = null,$alamat =null ,$jenis =null,$tb =null,$bb =null ) {
     return view('bio', compact('nama','alamat','jenis','tb','bb'));
 });
+
+//mengakses data melalui model
+Route::get('testmodel', function () {
+    $query = App\Models\Post::all();
+    return $query;
+});
+
+//mencari data berdasarkan parameter 'id'
+Route::get('testmodel/{id}', function ($id) {
+    $query = App\Models\Post::find($id);
+    return $query;
+});
+
+//mencari data berdasarkan field 'title' yang sama dengan
+//parameter 's'
+Route::get('testmodel-cari/{search}', function ($s) {
+    $query = App\Models\Post::where('title','like',"%$s%")->get();
+    return $query;
+});
+
+//mengubah judul dari data ke 2 berdasarkan 'id'
+Route::get('testmodel-/update', function () {
+    $query = App\Models\Post::find(2);
+    $query->title = "Bane Si Bajak Laut";
+    $query->save();
+    return $query;
+});
+
+//menambah data baru
+Route::get('testmodel-add', function () {
+    $query = new App\Models\Post();
+    $query->title = "sholawat penghapus maksiat";
+    $query->content = "loren ipsum si amet dolor";
+    $query->save();
+    return $query;
+});
+
+Route::get('testmodel-delete/{id}', function ($id) {
+    $query = App\Models\Post::find($id);
+    $query->delete();
+    return redirect('/testmodel');
+});
+
+//latihan memunculkan semua data
+Route::get('barang', function () {
+    $query = App\Models\barang::all();
+    return $query;
+});
+
+Route::get('pesanan', function () {
+    $query = App\Models\pesanan::all();
+    return $query;
+});
+
+Route::get('pembelian', function () {
+    $query = App\Models\pembelian::all();
+    return $query;
+});
+
+Route::get('pembeli', function () {
+    $query = App\Models\pembeli::all();
+    return $query;
+});
+
+Route::get('suplier', function () {
+    $query = App\Models\suplier::all();
+    return $query;
+});
