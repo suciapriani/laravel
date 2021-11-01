@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//import controller yang akan digunakan
+use App\http\Controllers\MyController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -168,3 +171,15 @@ Route::get('suplier', function () {
     $query = App\Models\suplier::all();
     return $query;
 });
+
+//route dengan controller 
+Route::get('data-siswa',[MyController::class, 'index']);
+Route::get('posts',[MyController::class, 'posting']);
+Route::get('barang',[MyController::class, 'barang']);
+Route::get('pembelian',[MyController::class, 'pembelian']);
+Route::get('pembelian/{id}',[MyController::class, 'singlepembelian']);
+
+
+
+
+
