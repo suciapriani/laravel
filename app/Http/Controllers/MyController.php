@@ -6,6 +6,8 @@ use App\Models\Post;
 use App\Models\barang;
 use App\Models\pembelian;
 use App\Models\singlepembelian;
+use App\Models\hero;
+
 
 
 
@@ -33,6 +35,7 @@ class MyController extends Controller
         $barang = barang::all();
         return view('barang', compact ('barang'));
     }
+    //latihan
     public function pembelian()
     {
         $pembelian = pembelian::all();
@@ -43,6 +46,16 @@ class MyController extends Controller
         $singlepembelian= pembelian::findOrFail($id);
         return view('singlepembelian', compact ('singlepembelian'));
     }
-
+    //latihan
+    public function hero()
+    {
+        $hero= hero::all();
+        return view('hero', compact ('hero'));
+    }
+    public function singlehero($id)
+    {
+        $singlehero= hero::findOrFail($id);
+        return view('singlehero', compact ('singlehero'));
+    }
 }
 

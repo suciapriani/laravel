@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(pembelianSeeder::class);
         $this->call(pembeliSeeder::class);
         $this->call(suplierSeeder::class);
+        $this->call(heroSeeder::class);
+
 
 
 

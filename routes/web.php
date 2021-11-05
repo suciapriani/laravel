@@ -180,6 +180,11 @@ Route::get('pembelian',[MyController::class, 'pembelian']);
 Route::get('pembelian/{id}',[MyController::class, 'singlepembelian']);
 
 
+//latihan hero
+
+Route::get('hero',[MyController::class, 'hero']);
+Route::get('hero/{id}',[MyController::class, 'singlehero']);
+
 
 
 
